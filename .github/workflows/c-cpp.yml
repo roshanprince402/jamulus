@@ -8,4 +8,4 @@ jobs:
     - uses: pguyot/arm-runner-action@v2
       with:
         commands: |
-            apt-get install build-essential qt5-qmake qtdeclarative5-dev qt5-default qttools5-dev-tools jackd2 libjack-jackd2-dev  qjackctl libqt5websockets5-dev -y
+            apt-get install build-essential qt5-qmake qtdeclarative5-dev qttools5-dev-tools jackd2 libjack-jackd2-dev  qjackctl libqt5websockets5-dev -y
