@@ -3,15 +3,16 @@ on: [push, pull_request]
 jobs:
   aarch64_job:
     # The host should always be Linuxb
-    runs-on: ubuntu-latest
-    name: Build on ubuntu-latest
+    runs-on: ubuntu_latest
+    name: Build on ubuntu_latest1
     steps:
       - uses: actions/checkout@v3
       - uses: uraimo/run-on-arch-action@v2
         name: Run commands
         id: runcmd
         with:
-          distro: ubuntu-latest
+          arch: aarch64
+          distro: ubuntu_latest
 
           # Not required, but speeds up builds by storing container images in
           # a GitHub package registry.
