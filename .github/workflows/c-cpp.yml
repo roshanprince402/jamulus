@@ -2,7 +2,7 @@ on: [push, pull_request]
 
 jobs:
   aarch64_job:
-    # The host should always be Linux
+    # The host should always be Linuxb
     runs-on: buster
     name: Build on buster aarch64
     steps:
