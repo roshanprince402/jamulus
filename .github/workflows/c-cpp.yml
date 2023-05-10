@@ -5,10 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: jlumbroso/free-disk-space@main
     - uses: pguyot/arm-runner-action@v2
       with:
         base_image: raspios_lite_arm64:latest
-        tool-cache: true
+        optimize_image: true
         commands: |
             apt-get install build-essential qt5-qmake qtdeclarative5-dev qttools5-dev-tools jackd2 libjack-jackd2-dev  qjackctl libqt5websockets5-dev -y
