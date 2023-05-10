@@ -4,11 +4,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: ./ # pguyot/arm-runner-action@HEAD
+    - uses: actions/checkout@v2
+    - uses: pguyot/arm-runner-action@v2
       with:
         base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv8-Bullseye.7z
         cpu: cortex-a53
         commands: |
-            uname -a
-            apt-get install build-essential qt5-qmake qtdeclarative5-dev qttools5-dev-tools jackd2 libjack-jackd2-dev  qjackctl libqt5websockets5-dev -y
+          uname -a
+          apt-get install build-essential qt5-qmake qtdeclarative5-dev qttools5-dev-tools jackd2 libjack-jackd2-dev  qjackctl libqt5websockets5-dev -y
