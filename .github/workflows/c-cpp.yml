@@ -1,25 +1,14 @@
 on: [push, pull_request]
 
 jobs:
-  aarch64_job:
-    # The host should always be Linuxb
-    runs-on: buildjet-4vcpu-ubuntu-2204-arm
-    name: Build on buildjet-4vcpu-ubuntu-2204-arm
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: uraimo/run-on-arch-action@v2
-        name: Run commands
-        id: runcmd
-        with:
-          distro: buildjet-4vcpu-ubuntu-2204-arm
-
-          # Not required, but speeds up builds by storing container images in
-          # a GitHub package registry.
-          githubToken: ${{ github.token }}
-
-          # Set an output parameter `uname` for use in subsequent steps
-          run: |
+    - uses: actions/checkout@v3
+    - uses: ./ # pguyot/arm-runner-action@HEAD
+      with:
+        base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv8-Bullseye.7z
+        cpu: cortex-a53
+        commands: |
             uname -a
-            echo ::set-output name=uname::$(uname -a)
-            echo "Installing packages"
-            apt-get install build-essential qt5-qmake qtdeclarative5-dev qt5-default qttools5-dev-tools jackd2 libjack-jackd2-dev  qjackctl libqt5websockets5-dev
+            apt-get install build-essential qt5-qmake qtdeclarative5-dev qttools5-dev-tools jackd2 libjack-jackd2-dev  qjackctl libqt5websockets5-dev -y
