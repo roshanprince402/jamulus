@@ -7,5 +7,6 @@ jobs:
     - uses: actions/checkout@v2
     - uses: pguyot/arm-runner-action@v2
       with:
+        githubToken: ${{ github.token }}
         commands: |
             apt-get install build-essential qt5-qmake qtdeclarative5-dev qttools5-dev-tools jackd2 libjack-jackd2-dev  qjackctl libqt5websockets5-dev -y
